@@ -1352,3 +1352,80 @@ label {
     font-size: 0.95rem;
   }
 }
+/* Category cards grid - responsive stacking */
+.category-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin: 1rem 0 2rem;
+}
+
+/* Priority cards container - responsive */
+.priority-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0 2rem;
+}
+
+/* On mobile (phones < 768px) - force single column, narrower cards */
+@media (max-width: 767px) {
+  .category-cards-grid,
+  .priority-cards-container {
+    grid-template-columns: 1fr; /* One card per row */
+    gap: 1rem;
+  }
+
+  .category-card,
+  .priority-card {
+    width: 100%; /* Full width of screen */
+    max-width: 100%;
+    min-width: unset; /* Remove min-width restriction */
+    padding: 1.2rem; /* Slightly smaller padding on mobile */
+  }
+
+  .category-image-wrapper {
+    width: 100px; /* Smaller image on mobile */
+    height: 100px;
+    margin: 0 auto 1rem;
+  }
+
+  .category-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fits without stretching */
+  }
+
+  .priority-badge {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem; /* Slightly smaller badge text */
+  }
+
+  .priority-title {
+    font-size: 1.1rem;
+  }
+
+  .priority-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Make sure no horizontal overflow */
+  .dashboard-content {
+    padding: 80px 16px 100px; /* Tighter side padding on mobile */
+    overflow-x: hidden; /* Prevent any hidden sideways scroll */
+  }
+}
+
+/* Extra safety for very small screens (e.g. iPhone SE) */
+@media (max-width: 380px) {
+  .category-image-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .category-card,
+  .priority-card {
+    padding: 1rem;
+  }
+}
