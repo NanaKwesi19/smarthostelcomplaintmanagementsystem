@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiUser, FiShield, FiTool } from 'react-icons/fi';
-
+/* eslint-disable react-hooks/exhaustive-deps */
 const nameRegex = /^[A-Za-z\s]{2,60}$/;
 const roomRegex = /^[A-Za-z0-9\- ]{2,10}$/;
 
