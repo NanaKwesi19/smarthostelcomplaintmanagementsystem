@@ -1429,3 +1429,152 @@ label {
     padding: 1rem;
   }
 }
+/* Dashboard content - wider on large screens */
+.dashboard-content {
+  position: relative;
+  z-index: 4;
+  padding: 100px 20px 120px;
+  width: 100%;
+  max-width: 1400px; /* ← Increased from 1100px to fill larger screens better */
+  margin: 0 auto;
+}
+
+/* Category cards grid - responsive column control */
+.category-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* min 280px per card */
+  gap: 1.5rem; /* more breathing room */
+  margin: 1.5rem 0 3rem;
+}
+
+/* Priority cards container - similar control */
+.priority-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 1.5rem 0 3rem;
+}
+
+/* Card sizing & scaling on large screens */
+.category-card,
+.priority-card {
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 16px;
+  padding: 1.6rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  min-height: 280px; /* consistent height for alignment */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category-card:hover,
+.priority-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+}
+
+.category-card.selected,
+.priority-card.selected {
+  transform: scale(1.04);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+/* Image sizing - larger on big screens */
+.category-image-wrapper {
+  width: 120px; /* larger on desktop */
+  height: 120px;
+  margin: 0 auto 1.2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.category-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Text sizing on large screens */
+.category-card h4,
+.priority-title {
+  font-size: 1.35rem; /* bigger on desktop */
+  margin: 0.8rem 0 0.6rem;
+}
+
+.category-desc,
+.priority-desc {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+
+/* Extra large screens (laptops 1440px+, iPad Pro landscape) */
+@media (min-width: 1024px) {
+  .category-cards-grid {
+    grid-template-columns: repeat(3, 1fr); /* max 3 columns */
+    gap: 2rem;
+  }
+
+  .priority-cards-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .category-image-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .dashboard-content {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* Very large screens (27" monitors, etc.) */
+@media (min-width: 1440px) {
+  .category-cards-grid,
+  .priority-cards-container {
+    grid-template-columns: repeat(4, 1fr); /* max 4 columns */
+    max-width: 1200px;
+    margin: 2rem auto;
+  }
+
+  .category-image-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Mobile remains stacked (already fixed) */
+@media (max-width: 767px) {
+  .category-cards-grid,
+  .priority-cards-container {
+    grid-template-columns: 1fr; /* single column */
+    gap: 1.2rem;
+  }
+
+  .category-card,
+  .priority-card {
+    padding: 1.2rem;
+  }
+
+  .category-image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .dashboard-content {
+    padding: 90px 16px 100px;
+  }
+}
